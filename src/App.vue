@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <question-component></question-component>
+    <sidebar-component/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import QuestionComponent from './components/Question.vue';
+import SidebarComponent from './components/Sidebar.vue';
 
 export default {
   name: 'App',
   components: {
-    'question-component': QuestionComponent,
+    'sidebar-component': SidebarComponent
   },
 };
 </script>

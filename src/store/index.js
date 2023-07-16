@@ -1,32 +1,32 @@
 import { createStore } from 'vuex'
-import questions from '../static/json/questions'
+import questionsJson from '../static/json/questions'
 
 export default createStore({
   state: {
-    questions: [],
+    questions: questionsJson,
     userAnswers: [],
-    loading: false  // add loading state
+    loading: false
   },
   mutations: {
-    setQuestions(state, questions) {
-      state.questions = questions;
+    setQuestions(state) {
+      state.questions = questionsJson;
     },
     setLoading(state, status) {
       state.loading = status;
     },
-    // ...other mutations
+    setUserAnswer(state, questions) {
+      state.questions = questions;
+    }
   },
   actions: {
     async loadQuestions({ commit }) {
-      commit('setLoading', true);  // set loading to true before fetching data
-      commit('setQuestions', questions);
-      commit('setLoading', false);  // set loading to false after fetching data
-    },
-    // ...other actions
+      commit('setLoading', true);
+      commit('setQuestions');
+      commit('setLoading', false);
+    }
   },
   getters: {
     allQuestion: state => state.questions,
-    loading: state => state.loading,  // add loading getter
-    // ...other getters
+    loading: state => state.loading
   }
 });
